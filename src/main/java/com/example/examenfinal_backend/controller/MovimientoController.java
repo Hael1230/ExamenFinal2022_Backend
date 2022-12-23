@@ -46,4 +46,14 @@ public class MovimientoController {
 
 	}
 
+    @PostMapping
+	public Bill postBill(@RequestBody Bill bill) {
+		
+		billRepository.save(bill);
+		
+		return bill;
+		
+
+	}
+
 }
