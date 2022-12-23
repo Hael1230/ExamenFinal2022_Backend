@@ -56,4 +56,24 @@ public class MovimientoController {
 
 	}
 
+    
+
+    @DeleteMapping("/{id}")
+	public Bill deleteBillbyId(@PathVariable Integer id) {
+		
+		Optional<Bill> bill = billRepository.findById(id);
+		
+		if (bill.isPresent()) {
+			
+			Bill billReturn = bill.get();
+			
+			billRepository.deleteById(id);
+			
+			return billReturn;
+		}
+		
+		return null;
+
+	
+
 }

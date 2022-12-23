@@ -15,5 +15,8 @@ public class BillRepository {
     public Optional<Bill> findById(Integer user_id) {
         return null;
     }
+
+    public void save(Bill bill) {
+    }
     
 }
