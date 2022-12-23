@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.examenfinal_backend.entities.Bill;
 import com.example.examenfinal_backend.entities.Users;
+import com.example.examenfinal_backend.repository.BillRepository;
+import com.example.examenfinal_backend.repository.UsersRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,19 +22,28 @@ import java.util.Optional;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/bill")
 public class MovimientoController {
-    @GetMapping("/{username}")
-	public Users getUseriasbyUsarname(@PathVariable String usarname) {
+
+    @Autowired
+	BillRepository billRepository;
+
+    @GetMapping
+	public List<Bill> getBillAll() {
+
+		return billRepository.findAll();
+	}
+    @GetMapping("/{user_id}")
+	public Bill getBillbyUser_id(@PathVariable Integer user_id) {
 		
-		Optional<Users> users = usersRepository.findById(usarname);
+		Optional<Bill> bill = billRepository.findById(user_id);
 		
-		if (usarname.isPresent()) {
-			return usarname.get();
+		if (user_id.isPresent()) {
+			return user_id.get();
 		}
 		
 		return null;
 
 	}
-    
+
 }
