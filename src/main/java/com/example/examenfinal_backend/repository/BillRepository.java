@@ -18,5 +18,8 @@ public class BillRepository {
 
     public void save(Bill bill) {
     }
+
+    public void deleteById(Integer id) {
+    }
     
 }
